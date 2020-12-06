@@ -25,7 +25,13 @@ function makeGrid(event) {
 addTable();
 }
 
-//Color picker code desing from Udacity Knowledge Q&A Platform.
 function addColor(event) {
   event.target.style.backgroundColor = colorPicker.value;
 }
+
+//In order to be able to create this project I have used the following websites:
+// - https://code-maven.com/
+// - https://developer.mozilla.org/en-US/
+// - https://stackoverflow.com/
+// - https://www.w3schools.com/
+// - https://knowledge.udacity.com/
