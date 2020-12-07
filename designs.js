@@ -1,33 +1,39 @@
 const color = document.getElementById('pixelCanvas');
 const log = document.getElementById('log');
 
+
 sizePicker.addEventListener('submit', makeGrid);
+pixelCanvas.addEventListener('click', addColor); //performance optimalisation
+
 
 function makeGrid(event) {
-    let gridH = Number(document.getElementById('inputHeight').value);
-    let gridW = Number(document.getElementById('inputWidth').value);
+    const gridH = Number(document.getElementById('inputHeight').value);//using input for number of rows to be created
+    const gridW = Number(document.getElementById('inputWidth').value);//using input for number of columns to be created
 
     event.preventDefault();
 
     function addTable() {
-        let t = document.getElementById('pixelCanvas');
-        while (t.hasChildNodes())
-            t.removeChild(t.firstChild);
+        const t = document.getElementById('pixelCanvas');
+        while (t.hasChildNodes())//checks for content and if there's any - clears it 
+            if (t.innerHTML !== null)
+                t.removeChild(t.firstChild);
 
         for (let i = 0; i < gridH; i++) {
-            let newTR = t.insertRow(i);
+            let newTR = t.insertRow(i); 
             for (let j = 0; j < gridW; j++) {
                 let newTD = newTR.insertCell(j);
-                color.addEventListener('click', addColor)
             }
         };
     }
     addTable();
 }
 
+
 function addColor(event) {
-    event.target.style.backgroundColor = colorPicker.value;
+    if (event.target.nodeName === 'TD')
+        event.target.style.backgroundColor = colorPicker.value;//using the value of the color picker, can be changed
 }
+
 
 //In order to be able to create this project I have used the following websites:
 // - https://code-maven.com/
@@ -35,3 +41,4 @@ function addColor(event) {
 // - https://stackoverflow.com/
 // - https://www.w3schools.com/
 // - https://knowledge.udacity.com/
+// - Thanks for my Udacity reviewer for insightful comments and recommendations!
