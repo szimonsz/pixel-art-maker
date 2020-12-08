@@ -5,23 +5,25 @@ const log = document.getElementById('log');
 sizePicker.addEventListener('submit', makeGrid);
 pixelCanvas.addEventListener('click', addColor); //performance optimalisation
 
-
+//creates an HTML table with the dimensions set by user.
 function makeGrid(event) {
-    const gridH = Number(document.getElementById('inputHeight').value);//using input for number of rows to be created
-    const gridW = Number(document.getElementById('inputWidth').value);//using input for number of columns to be created
-
+    //using input for number of rows to be created
+    const gridH = Number(document.getElementById('inputHeight').value);
+    //using input for number of columns to be created
+    const gridW = Number(document.getElementById('inputWidth').value);
+    
     event.preventDefault();
 
     function addTable() {
-        const t = document.getElementById('pixelCanvas');
-        while (t.hasChildNodes())//checks for content and if there's any - clears it 
-            if (t.innerHTML !== null)
-                t.removeChild(t.firstChild);
+        const table = document.getElementById('pixelCanvas');
+        while (table.hasChildNodes())//checks for content and if there's any - clears it 
+            if (table.innerHTML !== null)
+                table.removeChild(table.firstChild);
 
         for (let i = 0; i < gridH; i++) {
-            let newTR = t.insertRow(i); 
+            const newTR = table.insertRow(i); 
             for (let j = 0; j < gridW; j++) {
-                let newTD = newTR.insertCell(j);
+                const newTD = newTR.insertCell(j);
             }
         };
     }
